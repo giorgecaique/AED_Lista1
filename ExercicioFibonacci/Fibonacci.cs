@@ -9,14 +9,14 @@ namespace ExercicioFibonacci
     public class Fibonacci
     {
         static public int _contadorIterativo = 0;
-        static public int _contadorRecursivo = 0;
+        static public long _contadorRecursivo = 0;
 
         public static int ContadorIterativo
         {
             get { return _contadorIterativo; }
         }
 
-        public static int ContadorRecursivo
+        public static long ContadorRecursivo
         {
             get { return _contadorRecursivo; }
         }
