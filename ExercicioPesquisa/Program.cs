@@ -12,18 +12,28 @@ namespace ExercicioPesquisa
         static void Main(string[] args)
         {
             Pesquisa pesquisa = new Pesquisa();
+            Console.Write("Digite o valor de N: ");
+            int n;
+            if (int.TryParse(Console.ReadLine(), out n))
+            {
+                DateTime inicio = DateTime.Now;
+                long resultIterativo = pesquisa.Sequencial(n);
+                DateTime fim = DateTime.Now;
+                TimeSpan difIterativo = fim - inicio;
 
-            DateTime inicio = DateTime.Now;
-            long resultIterativo = pesquisa.Sequencial(9);
-            DateTime fim = DateTime.Now;
-            TimeSpan difIterativo = fim - inicio;
+                DateTime inicioRecursivo = DateTime.Now;
+                long resultRecursivo = pesquisa.Binaria(n);
+                DateTime fimRecursivo = DateTime.Now;
+                TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
 
-            DateTime inicioRecursivo = DateTime.Now;
-            long resultRecursivo = pesquisa.Binaria(9);
-            DateTime fimRecursivo = DateTime.Now;
-            TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
-
-            Cabecalho.Print("Pesquisa", difIterativo, difRecursivo, Pesquisa.ContadorIterativo, Pesquisa.ContadorRecursivo, resultIterativo, resultRecursivo);
+                Cabecalho.Print("Pesquisa", difIterativo, difRecursivo, Pesquisa.ContadorIterativo, Pesquisa.ContadorRecursivo, resultIterativo, resultRecursivo);
+            }
+            else
+            {
+                Console.WriteLine("Entrada inválida!");
+                Console.WriteLine("Pressione qualquer tecla para sair");
+                Console.ReadKey();
+            }
         }
     }
 }

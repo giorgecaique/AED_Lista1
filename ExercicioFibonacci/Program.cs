@@ -11,17 +11,28 @@ namespace ExercicioFibonacci
     {
         static void Main(string[] args)
         {
-            DateTime inicio = DateTime.Now;
-            long resultIterativo = Fibonacci.Iterativo(40);
-            DateTime fim = DateTime.Now;
-            TimeSpan difIterativo = fim - inicio;
+            Console.Write("Digite o valor de N: ");
+            int n;
+            if (int.TryParse(Console.ReadLine(), out n))
+            {
+                DateTime inicio = DateTime.Now;
+                long resultIterativo = Fibonacci.Iterativo(n);
+                DateTime fim = DateTime.Now;
+                TimeSpan difIterativo = fim - inicio;
 
-            DateTime inicioRecursivo = DateTime.Now;
-            long resultRecursivo = Fibonacci.Recursivo(40);
-            DateTime fimRecursivo = DateTime.Now;
-            TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
+                DateTime inicioRecursivo = DateTime.Now;
+                long resultRecursivo = Fibonacci.Recursivo(n);
+                DateTime fimRecursivo = DateTime.Now;
+                TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
 
-            Cabecalho.Print("Fibonacci", difIterativo, difRecursivo, Fibonacci.ContadorIterativo, Fibonacci.ContadorRecursivo, resultIterativo, resultRecursivo);
+                Cabecalho.Print("Fibonacci", difIterativo, difRecursivo, Fibonacci.ContadorIterativo, Fibonacci.ContadorRecursivo, resultIterativo, resultRecursivo);
+            }
+            else
+            {
+                Console.WriteLine("Entrada inválida!");
+                Console.WriteLine("Pressione qualquer tecla para sair");
+                Console.ReadKey();
+            }
         }
     }
 }

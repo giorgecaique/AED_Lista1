@@ -11,17 +11,28 @@ namespace ExercicioFatorial
     {
         static void Main(string[] args)
         {
-            DateTime inicio = DateTime.Now;
-            long resultIterativo = Fatorial.Iterativo(5);
-            DateTime fim = DateTime.Now;
-            TimeSpan difIterativo = fim - inicio;
+            Console.Write("Digite o valor de N: ");
+            int n;
+            if(int.TryParse(Console.ReadLine(), out n))
+            {
+                DateTime inicio = DateTime.Now;
+                long resultIterativo = Fatorial.Iterativo(n);
+                DateTime fim = DateTime.Now;
+                TimeSpan difIterativo = fim - inicio;
 
-            DateTime inicioRecursivo = DateTime.Now;
-            long resultRecursivo = Fatorial.Recursivo(5);
-            DateTime fimRecursivo = DateTime.Now;
-            TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
+                DateTime inicioRecursivo = DateTime.Now;
+                long resultRecursivo = Fatorial.Recursivo(n);
+                DateTime fimRecursivo = DateTime.Now;
+                TimeSpan difRecursivo = fimRecursivo - inicioRecursivo;
 
-            Cabecalho.Print("Fatorial", difIterativo, difRecursivo, Fatorial.ContadorIterativo, Fatorial.ContadorRecursivo, resultIterativo, resultRecursivo);
+                Cabecalho.Print("Fatorial", difIterativo, difRecursivo, Fatorial.ContadorIterativo, Fatorial.ContadorRecursivo, resultIterativo, resultRecursivo);
+            }
+            else
+            {
+                Console.WriteLine("Entrada inválida!");
+                Console.WriteLine("Pressione qualquer tecla para sair");
+                Console.ReadKey();
+            }
         }
     }
 }
